@@ -3,7 +3,6 @@ package com.example.runningapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -61,7 +60,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
         double magnitude = round(Math.sqrt((xCoordinate*xCoordinate) + (yCoordinate*yCoordinate) + (zCoordinate*zCoordinate)), 2);
 
-        if(started = true) {
             if ((magnitude > HI_Step) && (highLimit == false)) {
                 highLimit = true;
             }
@@ -70,7 +68,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                 tvSteps.setText(String.valueOf(stepCounter));
                 highLimit = false;
             }
-        }
     }
 
     @Override
@@ -86,24 +83,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         long tmp = Math.round(value);
         return (double) tmp / factor;
     }
-
-    /*
-     * When the app is brought to the foreground - using app on screen
-     */
-//    protected void onResume() {
-//        super.onResume();
-//        // turn on the sensor
-//        mSensorManager.registerListener(this, mSensor,
-//                SensorManager.SENSOR_DELAY_NORMAL);
-//    }
-
-    /*
-     * App running but not on screen - in the background
-     */
-//    protected void onPause() {
-//        super.onPause();
-//        mSensorManager.unregisterListener(this);    // turn off listener to save power
-//    }
 
     public void doStart(View view) {
         mSensorManager.registerListener(this, mSensor, SensorManager.SENSOR_DELAY_NORMAL);
@@ -122,7 +101,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         tvSteps.setText("0");
         stepCounter = 0;
         mSensorManager.unregisterListener(this);
-
     }
 
     public void switchRun(View view) {

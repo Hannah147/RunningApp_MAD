@@ -15,7 +15,7 @@ public class SummaryPage extends AppCompatActivity {
 
     TextView tvDate, tvMetresRan, tvCalories, tvTimeRan;
     Integer usersSteps;
-    Double usersTime, metresRan, caloriesBurned, timeRan;
+    Double usersTime, metresRan, caloriesBurned;
     String usersTimeS;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +30,6 @@ public class SummaryPage extends AppCompatActivity {
         // Bring data over from main page
         usersSteps = getIntent().getIntExtra("usersSteps", 1);
         usersTimeS = getIntent().getStringExtra("usersTime");
-//        tvTimeRan.setText(usersTimeS);
         usersTime = Double.parseDouble(usersTimeS);
 
         // Get current date and format it
@@ -42,7 +41,7 @@ public class SummaryPage extends AppCompatActivity {
 
         metresRan = usersSteps * 0.8;
         caloriesBurned = usersSteps * 0.04;
-//
+
         tvDate.setText(formattedDate);
         tvMetresRan.setText(String.format("%.2f", metresRan) + " metres ran");
         tvCalories.setText(String.format("%.2f", caloriesBurned) + " calories burned");
